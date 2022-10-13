@@ -49,7 +49,6 @@ class transactionController {
         url: response.data.callback_url,
       });
     } catch (err) {
-      console.log(err);
       next(err);
     }
   }
