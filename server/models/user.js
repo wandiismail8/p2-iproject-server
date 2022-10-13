@@ -11,7 +11,8 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // define association here
+      User.hasMany(models.Transaction)
+
     }
   }
   User.init({
@@ -53,7 +54,7 @@ module.exports = (sequelize, DataTypes) => {
         }
       }
     },
-    role: DataTypes.STRING
+    proVersion: DataTypes.BOOLEAN
   }, {
     sequelize,
     modelName: 'User',
@@ -61,6 +62,7 @@ module.exports = (sequelize, DataTypes) => {
 
   User.beforeCreate((instance) => {
     instance.password = createHashPassword(instance.password)
+    instance.proVersion = false
   })
   return User;
 };

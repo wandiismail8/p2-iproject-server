@@ -1,4 +1,5 @@
 const errorHandler = (err, req, res, next) => {
+  console.log(err);
   let code;
   let message;
   if (
@@ -16,9 +17,9 @@ const errorHandler = (err, req, res, next) => {
   } else if (err.name === "JsonWebTokenError") {
     code = 401;
     message = "Invalid Token";
-  } else if (err.name === "INVALID_USERNAME_OR_PASSWORD") {
+  } else if (err.name === "Invalid Email/Password") {
     code = 401;
-    message = "Invalid Username/Password";
+    message = "Invalid Email/Password";
   } else if (err.name === "Forbidden") {
     code = 403;
     message = err.name;

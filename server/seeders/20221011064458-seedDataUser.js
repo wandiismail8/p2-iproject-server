@@ -9,7 +9,7 @@ module.exports = {
         username: "wandi",
         email: "wandi@mail.com",
         password: createHashPassword("123456"),
-        role: "reguler",
+        proVersion : false,
         createdAt: new Date(),
         updatedAt: new Date(),
       },

@@ -1,11 +1,16 @@
 const { compareHashWithPassword, signPayloadToToken } = require("../helpers/helpers")
+const mailer = require("../helpers/mailer")
 const {User} = require("../models")
+
+
 
 class userController {
     static async registerUser(req, res, next){
         const { username, email, password } = req.body
         try {
             let user = await User.create({ username, email, password })
+            mailer(email)
+
 
             res.status(201).json({
                 username : user.username,
@@ -13,8 +18,8 @@ class userController {
             })
 
         } catch (err) {
-            console.log(err);
-            // next(err)
+            next(err)
+            
            
             
         }
@@ -34,6 +39,7 @@ class userController {
 
             
         } catch (err) {
+            next(err)
             
             
         }

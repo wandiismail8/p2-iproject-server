@@ -1,6 +1,8 @@
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
-const secretKey = "Rahasia";  //nanti ini masuk env
+
+const secretKey="Rahasia"
+
 
 const createHashPassword = (password) => bcrypt.hashSync(password);
 const compareHashWithPassword = (password, hash) =>
